@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar"
+import { Toaster } from "@/components/ui/toaster"
 import { cn } from "@/lib/utils"
 import "@/styles/globals.css"
 import type { Metadata } from "next"
@@ -8,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "coreddit",
-  description: "Welcome!",
+  description: "꼬레딧!",
 }
 
 export default function RootLayout({
@@ -18,13 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="ko"
       className={cn("bg-white text-slate-900 antialiased", inter.className)}
     >
       <body className="min-h-screen pt-12 bg-slate-50 antialiased">
         <Navbar />
         <div className="container max-w-7xl mx-auto h-full pt-12"></div>
-        {children}
+        <div className="container max-w-7xl mx-auto h-full pt-12">
+          {children}
+        </div>
+        <Toaster />
       </body>
     </html>
   )
