@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { Icons } from "./Icons"
-import { buttonVariants } from "./ui/button"
+import { buttonVariants } from "./ui/Button"
 import { getAuthSession } from "@/lib/auth"
+import UserAccountNav from "./UserAccountNav"
 
 interface NavbarProps {}
 
@@ -23,7 +24,7 @@ export default async function Navbar({}: NavbarProps) {
         {/* search bar */}
 
         {session?.user ? (
-          <p>로그인이 됏음</p>
+          <UserAccountNav user={session.user} />
         ) : (
           <Link href={"/sign-in"} className={buttonVariants()}>
             로그인
