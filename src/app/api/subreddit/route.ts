@@ -44,7 +44,10 @@ export async function POST(req: Request) {
     return new Response(subreddit.name)
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return new Response(error.message, { status: 422 })
+      return new Response(
+        "유효하지 않은 subreddit 이름입니다. 3글자 이상 21글자 이내로 이름을 정하세요",
+        { status: 422 }
+      )
     }
 
     console.log(error)

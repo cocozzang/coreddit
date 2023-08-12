@@ -1,3 +1,4 @@
+import SubscribeLeaveToggle from "@/components/SubscribeLeaveToggle"
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config"
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
@@ -24,6 +25,11 @@ export default async function Layout({
         include: {
           author: true,
           votes: true,
+        },
+      },
+      Creator: {
+        select: {
+          name: true,
         },
       },
     },
@@ -85,13 +91,19 @@ export default async function Layout({
                 </dd>
               </div>
 
-              {subreddit.creatorId === session?.user.id ? (
-                <div className=" flex justify-between gap-x-4 py-3">
-                  <p className="text-gray-500">
-                    현재 유저 본인이 최초 생성한 subreddit입니다.
-                  </p>
-                </div>
-              ) : null}
+              <div className=" flex justify-between gap-x-4 py-3">
+                <p className="text-gray-500">
+                  {subreddit.Creator?.name} 님이 만든 subreddit입니다.
+                </p>
+              </div>
+
+              {subreddit.creatorId !== session?.user.id && (
+                <SubscribeLeaveToggle
+                  subredditId={subreddit.id}
+                  subredditName={subreddit.name}
+                  isSubscribed={isSubscribed}
+                />
+              )}
             </dl>
           </div>
         </div>
