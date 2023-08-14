@@ -1,8 +1,10 @@
 import SubscribeLeaveToggle from "@/components/SubscribeLeaveToggle"
+import { buttonVariants } from "@/components/ui/Button"
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config"
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { format } from "date-fns"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
 interface LayoutProps {
@@ -74,7 +76,7 @@ export default async function Layout({
               <p className="font-semibold py-3">About r/{subreddit.name}</p>
             </div>
 
-            <dl className="divide-y divide-gray-100 px-6 py-4 text-sm leading-6 bg-white">
+            <dl className="px-6 py-4 text-sm leading-6 bg-white">
               <div className="flex justify-between gap-x-4 py-3">
                 <dt className="text-gray-500">Creted</dt>
                 <dd className="text-gray-700">
@@ -84,12 +86,16 @@ export default async function Layout({
                 </dd>
               </div>
 
+              <hr />
+
               <div className="flex justify-between gap-x-4 py-3">
                 <dt className="text-gray-500">Mebers</dt>
                 <dd className="text-gray-700">
                   <div className="text-gray-900">{memberCount}</div>
                 </dd>
               </div>
+
+              <hr />
 
               <div className=" flex justify-between gap-x-4 py-3">
                 <p className="text-gray-500">
@@ -104,6 +110,16 @@ export default async function Layout({
                   isSubscribed={isSubscribed}
                 />
               )}
+
+              <Link
+                className={buttonVariants({
+                  variant: "outline",
+                  className: "w-full mb-6",
+                })}
+                href={`/r/${slug}/submit`}
+              >
+                포스트 작성하기
+              </Link>
             </dl>
           </div>
         </div>
