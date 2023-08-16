@@ -62,6 +62,8 @@ export default function PostFeed({
           return (
             <li key={post.id} ref={ref}>
               <Post
+                currentVote={currentVote}
+                votesAmt={votesAmt}
                 subredditName={post.subreddit.name}
                 post={post}
                 commentAmt={post.comments.length}
@@ -71,6 +73,8 @@ export default function PostFeed({
         } else {
           return (
             <Post
+              currentVote={currentVote}
+              votesAmt={votesAmt}
               key={post.id}
               subredditName={post.subreddit.name}
               post={post}
