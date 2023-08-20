@@ -55,7 +55,7 @@ export default function Post({
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
 
-          <a href={`/r${subredditName}/post/${post.id}`}>
+          <a href={`/r/${subredditName}/post/${post.id}`}>
             <h1 className="text-lg font-semibold py-2 leading-6 text-gray-900">
               {post.title}
             </h1>
@@ -76,7 +76,7 @@ export default function Post({
       <div className="bg-gray-50 z-20 text-sm p-4 sm:px-6">
         <a
           className="w-fit flex items-center gap-2"
-          href={`/r${subredditName}/post/${post.id}`}
+          href={`/r/${subredditName}/post/${post.id}`}
         >
           <MessageSquare className="h-4 w-4" />
           {commentAmt} comments
