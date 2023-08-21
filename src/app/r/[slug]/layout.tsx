@@ -118,7 +118,7 @@ export default async function Layout({
                 })}
                 href={`/r/${slug}/submit`}
               >
-                포스트 작성하기
+                <p className="font-black">포스트 작성하기</p>
               </Link>
             </dl>
           </div>
